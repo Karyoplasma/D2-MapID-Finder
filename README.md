@@ -10,3 +10,7 @@ Not quite sure which Java version you need to run it, but everything above 7 is 
 
 Initial release:
 https://github.com/Karyoplasma/D2-MapID-Finder/releases/tag/1.0.0
+
+## Additional note:
+If you like this tool, I wrote another one that lets you change your map ID without running the -seed command. You can check it out here:
+https://github.com/Karyoplasma/Diablo2MapIDChanger

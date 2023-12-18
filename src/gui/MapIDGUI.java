@@ -7,6 +7,9 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+import actions.OpenButtonAction;
+import actions.ShareButtonAction;
+import net.miginfocom.swing.MigLayout;
 
 public class MapIDGUI {
 
@@ -45,69 +48,56 @@ public class MapIDGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		MapIDFinderActionListener actionListener = new MapIDFinderActionListener(this);
 		
 		frmMapIdFinder = new JFrame();
 		frmMapIdFinder.setTitle("Map ID Finder");
-		frmMapIdFinder.setResizable(false);
-		frmMapIdFinder.setBounds(100, 100, 450, 224);
+		frmMapIdFinder.setBounds(100, 100, 500, 200);
 		frmMapIdFinder.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMapIdFinder.getContentPane().setLayout(null);
+		frmMapIdFinder.getContentPane().setLayout(new MigLayout("", "[][][][][grow][][]", "[][][][][grow]"));
 		
-		btnOpen = new JButton("Open");
-		btnOpen.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnOpen.setBounds(180, 10, 90, 25);
-		btnOpen.addActionListener(actionListener);
-		frmMapIdFinder.getContentPane().add(btnOpen);
+		btnOpen = new JButton(new OpenButtonAction(this));
+		btnOpen.setFont(new Font("Tahoma", Font.BOLD, 14));
+		frmMapIdFinder.getContentPane().add(btnOpen, "cell 0 0,grow");
 		
 		lblCharInfo = new JLabel("No character loaded");
 		lblCharInfo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCharInfo.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblCharInfo.setBounds(10, 40, 424, 17);
-		frmMapIdFinder.getContentPane().add(lblCharInfo);
+		frmMapIdFinder.getContentPane().add(lblCharInfo, "cell 0 1 7 1,grow");
 		
 		JLabel lblMapId = new JLabel("Map ID:");
-		lblMapId.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblMapId.setBounds(10, 77, 48, 17);
-		frmMapIdFinder.getContentPane().add(lblMapId);
+		lblMapId.setFont(new Font("Tahoma", Font.BOLD, 14));
+		frmMapIdFinder.getContentPane().add(lblMapId, "cell 0 2,grow");
 		
 		textFieldMapID = new JTextField();
 		textFieldMapID.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldMapID.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textFieldMapID.setEditable(false);
-		textFieldMapID.setBounds(68, 74, 157, 23);
-		frmMapIdFinder.getContentPane().add(textFieldMapID);
+		frmMapIdFinder.getContentPane().add(textFieldMapID, "cell 1 2 2 1,grow");
 		textFieldMapID.setColumns(10);
 		
 		JLabel lblSeed = new JLabel("Seed:");
-		lblSeed.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblSeed.setBounds(235, 77, 35, 17);
-		frmMapIdFinder.getContentPane().add(lblSeed);
+		lblSeed.setFont(new Font("Tahoma", Font.BOLD, 14));
+		frmMapIdFinder.getContentPane().add(lblSeed, "cell 3 2,grow");
 		
 		textFieldSeed = new JTextField();
 		textFieldSeed.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldSeed.setEditable(false);
 		textFieldSeed.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textFieldSeed.setBounds(280, 74, 154, 23);
-		frmMapIdFinder.getContentPane().add(textFieldSeed);
+		frmMapIdFinder.getContentPane().add(textFieldSeed, "cell 4 2 3 1,grow");
 		textFieldSeed.setColumns(10);
 		
 		JLabel lblNotes = new JLabel("Notes:");
-		lblNotes.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNotes.setBounds(10, 113, 40, 17);
-		frmMapIdFinder.getContentPane().add(lblNotes);
+		lblNotes.setFont(new Font("Tahoma", Font.BOLD, 14));
+		frmMapIdFinder.getContentPane().add(lblNotes, "cell 0 3,grow");
 		
 		textFieldNotes = new JTextField();
 		textFieldNotes.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textFieldNotes.setBounds(60, 110, 374, 23);
-		frmMapIdFinder.getContentPane().add(textFieldNotes);
+		frmMapIdFinder.getContentPane().add(textFieldNotes, "cell 1 3 6 1,grow");
 		textFieldNotes.setColumns(10);
 		
-		btnShare = new JButton("Share");
+		btnShare = new JButton(new ShareButtonAction(this));
 		btnShare.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnShare.setBounds(359, 146, 75, 39);
-		btnShare.addActionListener(actionListener);
-		frmMapIdFinder.getContentPane().add(btnShare);
+		frmMapIdFinder.getContentPane().add(btnShare, "cell 0 4 7 1,grow");
 	}
 	
 	public String getCharInfo() {
@@ -117,9 +107,9 @@ public class MapIDGUI {
 	public String getMapID() {
 		return this.textFieldMapID.getText();
 	}
-
+	
 	public String getSeed() {
-		return this.textFieldSeed.getText();
+		return textFieldSeed.getText();
 	}
 
 	public String getNotes() {
