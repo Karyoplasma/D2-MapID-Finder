@@ -8,8 +8,8 @@ UI should be self-explanatory. I suggest putting the jar-file in your save direc
 
 Not quite sure which Java version you need to run it, but everything above 7 is definitely fine.
 
-Initial release:
-https://github.com/Karyoplasma/D2-MapID-Finder/releases/tag/1.0.0
+Latest release:
+https://github.com/Karyoplasma/D2-MapID-Finder/releases/tag/1.0.1
 
 ## Additional note:
 If you like this tool, I wrote another one that lets you change your map ID without running the -seed command. You can check it out here:
